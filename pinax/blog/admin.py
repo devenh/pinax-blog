@@ -39,6 +39,7 @@ class PostAdmin(admin.ModelAdmin):
         "title",
         "slug",
         "author",
+        "categories",
         "markup",
         "teaser",
         "content",

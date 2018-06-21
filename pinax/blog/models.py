@@ -15,6 +15,9 @@ from .conf import settings
 from .hooks import hookset
 from .managers import PostManager
 
+# Kwaddle specific imports
+from kwaddle.models import Category
+
 try:
     from string import letters
 except ImportError:
@@ -80,6 +83,8 @@ class Post(models.Model):
         verbose_name=_("Author"),
         on_delete=models.CASCADE
     )
+
+    categories = models.ManyToManyField('kwaddle.Category')
 
     markup = models.CharField(_("Markup"), max_length=25, choices=settings.PINAX_BLOG_MARKUP_CHOICES)
 
