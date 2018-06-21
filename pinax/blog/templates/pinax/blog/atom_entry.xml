@@ -11,11 +11,11 @@
     </author>
 
     <summary type="html">
-            {{ entry.teaser_html }}
+            {{ entry.description }}
     </summary>
 
     <content type="html" xml:lang="en">
-        {{ entry.teaser_html }}
+        {{ entry.description }}
         {{ entry.content_html }}
     </content>
 </entry>

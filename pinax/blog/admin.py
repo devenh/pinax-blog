@@ -16,8 +16,10 @@ from .models import Blog, Post, ReviewComment, Section
 #        proxy = True
 
 
-class ReviewInline(admin.TabularInline):
-    model = ReviewComment
+#we don't need review comments inside the admin panel right now.
+#maybe in the future for workflow and reviewing articles.
+#class ReviewInline(admin.TabularInline):
+#    model = ReviewComment
 
 
 def make_published(modeladmin, request, queryset):
@@ -53,7 +55,7 @@ class PostAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {"slug": ("title",)}
     inlines = [
-        ReviewInline,
+#        ReviewInline,
     ]
 
     def show_secret_share_url(self, obj):

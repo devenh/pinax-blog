@@ -1,11 +1,28 @@
-{% extends "pinax/blog/blog_base.html" %}
+{% extends "base.html" %}
+{% comment %}
+  extend from kwaddle's base.html, to get shared nav bar and analytics scripts to load
+{% endcomment %}
 
-{% block body_class %}blog blog-post{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
-{% block head_title_base %}{{ post.title }} | {{ SITE_NAME }}{% endblock %}
+{% block nav %}
+    {% with selected_nav_page_name="resource_article" %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
 
-{% block extra_head %}
+{% block meta-description %}
+  {% if post.description %}
+      <meta name="description" content="{{ post.description }}">
+  {% else %}
     {{ block.super }}
+  {% endif %}
+{% endblock meta-description %}
+
+
+{% block extraheader %}
+    {{ block.super }}
+    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <meta name="twitter:card" content="summary">
     {% comment %}
     <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/62846141/pinaxproject_avatar.png">
@@ -15,8 +32,8 @@
         <meta name="description" content="{{ post.description }}">
         <meta property="og:description" content="{{ post.description }}">
     {% else %}
-        <meta name="description" content="{{ post.teaser_html|striptags }}">
-        <meta property="og:description" content="{{ post.teaser_html|striptags }}">
+        <meta name="description" content="{{ post.description }}">
+        <meta property="og:description" content="{{ post.description }}">
     {% endif %}
     {% if post.primary_image %}
         <meta property="og:image" content="http://{{ SITE_DOMAIN }}{{ post.primary_image.image_path.url }}">
@@ -25,20 +42,14 @@
         <meta property="og:image" content="https://pbs.twimg.com/profile_images/62846141/pinaxproject_avatar.png">
         {% endcomment %}
     {% endif %}
-    <meta property="og:url" content="http://{{ SITE_DOMAIN }}{{ post.get_absolute_url }}">
+    <meta property="og:url" content="https://www.kwaddle.com{{ post.get_absolute_url }}">
     <meta property="og:type" content="article">
 {% endblock %}
 
-{% block content %}
+{% block body %}
     <div class="post-detail">
         <div class="post">
-            <h1>{{ post.title }}</h1>
-            {% include "pinax/blog/dateline_stale.html" %}
-
-            {% comment %}
-              <!-- don't think we need the teaser, if we have good descriptions -->
-              <div class="teaser">{{ post.teaser_html|safe }}</div>
-            {% endcomment %}
+            <h1>{{ post.title }}</h1>            
 
             <div class="content">{{ post.content_html|safe }}</div>
 
