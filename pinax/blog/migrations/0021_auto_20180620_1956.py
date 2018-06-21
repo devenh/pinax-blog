@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pinax_images', '0001_initial'),
+#        ('pinax_images', '0001_initial'),
         ('kwaddle', '0052_sort_by_no_blanks'),
         ('blog', '0020_auto_20171106_2252'),
     ]

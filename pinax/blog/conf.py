@@ -16,6 +16,7 @@ def is_installed(package):
 
 
 DEFAULT_MARKUP_CHOICE_MAP = {
+    "html": {"label": "Html", "parser": "pinax.blog.parsers.html_parser.parse"},
     "markdown": {"label": "Markdown", "parser": "pinax.blog.parsers.markdown_parser.parse"}
 }
 if is_installed("creole"):

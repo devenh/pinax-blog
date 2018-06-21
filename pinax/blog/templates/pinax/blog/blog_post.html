@@ -35,7 +35,10 @@
             <h1>{{ post.title }}</h1>
             {% include "pinax/blog/dateline_stale.html" %}
 
-            <div class="teaser">{{ post.teaser_html|safe }}</div>
+            {% comment %}
+              <!-- don't think we need the teaser, if we have good descriptions -->
+              <div class="teaser">{{ post.teaser_html|safe }}</div>
+            {% endcomment %}
 
             <div class="content">{{ post.content_html|safe }}</div>
 

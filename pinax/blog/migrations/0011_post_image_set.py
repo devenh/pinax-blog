@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pinax_images', '0001_initial'),
+#        ('pinax_images', '0001_initial'),
         ('blog', '0010_auto_20161223_1014'),
     ]
 

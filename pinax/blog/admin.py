@@ -3,17 +3,17 @@ from django.utils import timezone
 from django.utils.functional import curry
 from django.utils.translation import ugettext_lazy as _
 
-from pinax.images.admin import ImageInline
-from pinax.images.models import ImageSet
+#from pinax.images.admin import ImageInline
+#from pinax.images.models import ImageSet
 
 from .conf import settings
 from .forms import AdminPostForm
 from .models import Blog, Post, ReviewComment, Section
 
 
-class PostImageSet(ImageSet):
-    class Meta:
-        proxy = True
+#class PostImageSet(ImageSet):
+#    class Meta:
+#        proxy = True
 
 
 class ReviewInline(admin.TabularInline):
@@ -39,9 +39,9 @@ class PostAdmin(admin.ModelAdmin):
         "title",
         "slug",
         "author",
-        "categories",
+        "categories", # kwaddle categories
         "markup",
-        "teaser",
+#        "teaser",
         "content",
         "description",
         "sharable_url",
@@ -92,9 +92,9 @@ class SectionAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Section, SectionAdmin)
-admin.site.register(
-    PostImageSet,
-    list_display=["blog_post", "primary_image", "created_by", "created_at"],
-    raw_id_fields=["created_by"],
-    inlines=[ImageInline],
-)
+#admin.site.register(
+#    PostImageSet,
+#    list_display=["blog_post", "primary_image", "created_by", "created_at"],
+#    raw_id_fields=["created_by"],
+#    inlines=[ImageInline],
+#)
