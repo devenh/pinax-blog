@@ -12,13 +12,13 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.DeleteModel(
-            name='PostImageSet',
-        ),
-        migrations.RemoveField(
-            model_name='post',
-            name='image_set',
-        ),
+        # migrations.DeleteModel(
+        #     name='PostImageSet',
+        # ),
+        # migrations.RemoveField(
+        #     model_name='post',
+        #     name='image_set',
+        # ),
         migrations.AlterField(
             model_name='post',
             name='markup',

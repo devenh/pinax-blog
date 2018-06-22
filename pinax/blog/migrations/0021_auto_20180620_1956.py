@@ -10,20 +10,21 @@ class Migration(migrations.Migration):
     dependencies = [
 #        ('pinax_images', '0001_initial'),
         ('kwaddle', '0052_sort_by_no_blanks'),
-        ('blog', '0020_auto_20171106_2252'),
+        #('blog', '0020_auto_20171106_2252'),
+        ('blog', '0019_conditional_slug_unique'),
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='PostImageSet',
-            fields=[
-            ],
-            options={
-                'indexes': [],
-                'proxy': True,
-            },
-            bases=('pinax_images.imageset',),
-        ),
+        # migrations.CreateModel(
+        #     name='PostImageSet',
+        #     fields=[
+        #     ],
+        #     options={
+        #         'indexes': [],
+        #         'proxy': True,
+        #     },
+        #     bases=('pinax_images.imageset',),
+        # ),
         migrations.AddField(
             model_name='post',
             name='categories',
