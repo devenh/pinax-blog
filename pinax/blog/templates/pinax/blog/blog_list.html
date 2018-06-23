@@ -14,18 +14,21 @@
 
 
 {% block body %}
+<div class="blog-list container">
     {% if post_list %}
         <div class="post-list">
             {% for post in post_list %}
                 <div class="post">
                     <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>                    
                     <div class="teaser">{{ post.description }}</div>
-                    <p class="more"><a href="{{ post.get_absolute_url }}" class="post-link">read more...</a></p>
+                    <p class="more"><a href="{{ post.get_absolute_url }}" class="post-link read-more">read more...</a></p>
                 </div>
+                <hr>
             {% endfor %}
         </div>
         {% include "pinax/_pagination.html" %}
     {% else %}
         <p class="alert alert-info lead">No blog posts have been published.</p>
     {% endif %}
+</div>
 {% endblock body %}

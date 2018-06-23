@@ -38,7 +38,7 @@ class PinaxBlogAppConf(AppConf):
     MARKUP_CHOICES = DEFAULT_MARKUP_CHOICE_MAP
     SCOPING_MODEL = None
     SCOPING_URL_VAR = None
-    SLUG_UNIQUE = False
+    SLUG_UNIQUE = True #edited by deven, was False
     PAGINATE_BY = 10
     HOOKSET = "pinax.blog.hooks.PinaxBlogDefaultHookSet"
     ADMIN_JS = ("js/admin_post_form.js",)

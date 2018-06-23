@@ -9,7 +9,6 @@ from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 import pytz
-#from pinax.images.models import ImageSet
 
 from .conf import settings
 from .hooks import hookset
@@ -88,14 +87,9 @@ class Post(models.Model):
 
     markup = models.CharField(_("Markup"), max_length=25, choices=settings.PINAX_BLOG_MARKUP_CHOICES)
 
-    #having a teaser and description field seems redundant. it is mainly used for social sharing and SEO
-    #remove all references to teaser in models.py and forms.py
-    #teaser_html = models.TextField(editable=False)
     content_html = models.TextField(editable=False)
 
     description = models.TextField(_("Description"), blank=True)
-    #use ckeditor's image uploading, remove dependency on image_sets
-    #image_set = models.OneToOneField(ImageSet, related_name="blog_post", on_delete=models.CASCADE)
 
     created = models.DateTimeField(_("Created"), default=timezone.now, editable=False)  # when first revision was created
     updated = models.DateTimeField(_("Updated"), null=True, blank=True, editable=False)  # when last revision was created (even if not published)
@@ -136,13 +130,6 @@ class Post(models.Model):
     def meta_description(self):
         if self.description:
             return self.description
-#        else:
-#            return strip_tags(self.teaser_html)
-
-#    @property
-#    def meta_image(self):
-#        if self.image_set.primary_image:
-#            return self.image_set.primary_image.image.url
 
     def rev(self, rev_id):
         return self.revisions.get(pk=rev_id)
@@ -176,8 +163,6 @@ class Post(models.Model):
             self.secret_key = "".join(choice(letters) for _ in range(8))
         if self.is_published and self.published is None:
             self.published = timezone.now()
-#        if not ImageSet.objects.filter(blog_post=self).exists():
-#            self.image_set = ImageSet.objects.create(created_by=self.author)
         self.full_clean()
         super(Post, self).save(**kwargs)
 
@@ -241,7 +226,6 @@ class Revision(models.Model):
     )
 
     title = models.CharField(_("Title"), max_length=90)
-#    teaser = models.TextField(_("Teaser"))
 
     content = models.TextField(_("Content"))
 
