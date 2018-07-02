@@ -22,7 +22,6 @@
 
 {% block extraheader %}
     {{ block.super }}
-    <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
     <meta name="twitter:card" content="summary">
     {% comment %}
     <meta name="twitter:image" content="https://pbs.twimg.com/profile_images/62846141/pinaxproject_avatar.png">
@@ -47,16 +46,32 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="post-detail">
-        <div class="post">
-            <h1>{{ post.title }}</h1>            
+<div class="blog-post container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <!-- a hrefs need to be able to navigate to resources/evergreen/categories/timebased articles -->
+                    <li class="breadcrumb-item"><a href="{% url 'pinax_blog:blog' %}">Resources</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a href="#">Evergreen</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Category</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="post-detail">
+                <div class="post">
+                    <h1>{{ post.title }}</h1>            
 
-            <div class="content">{{ post.content_html|safe }}</div>
+                    <div class="content">{{ post.content_html|safe }}</div>
 
-            <div class="twitter-button">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <div class="twitter-button">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
