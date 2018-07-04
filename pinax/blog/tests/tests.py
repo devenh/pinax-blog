@@ -154,8 +154,8 @@ class TestViews(TestBlog):
             self.get("pinax_blog:manage_post_create")
             self.response_200()
             self.assertTemplateUsed("pinax/blog/manage_post_create")
-            pinax_images_upload_url = reverse("pinax_images:imageset_new_upload")
-            self.assertResponseContains(pinax_images_upload_url, html=False)
+            #pinax_images_upload_url = reverse("pinax_images:imageset_new_upload")
+            #elf.assertResponseContains(pinax_images_upload_url, html=False)
 
     def test_manage_post_create_post(self):
         """
