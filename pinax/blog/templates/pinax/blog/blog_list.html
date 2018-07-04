@@ -19,7 +19,7 @@
         <div class="col">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="pinax_blog:blog">Resources</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'pinax_blog:blog' %}">Resources</a></li>
                 </ol>
             </nav>
         </div>
@@ -30,7 +30,7 @@
         <div class="post-list">
             {% for post in post_list %}
                 <div class="post">
-                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>                    
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                     <div class="teaser">{{ post.description }}</div>
                     <p class="more"><a href="{{ post.get_absolute_url }}" class="post-link read-more">read more...</a></p>
                 </div>

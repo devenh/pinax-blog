@@ -15,7 +15,7 @@ from .hooks import hookset
 from .managers import PostManager
 
 # Kwaddle specific imports
-from kwaddle.models import Category
+from kwaddle.models import Category, Company
 
 try:
     from string import letters
@@ -84,6 +84,8 @@ class Post(models.Model):
     )
 
     categories = models.ManyToManyField('kwaddle.Category')
+
+    companies = models.ManyToManyField('kwaddle.Company', through='PostsCompanies')
 
     markup = models.CharField(_("Markup"), max_length=25, choices=settings.PINAX_BLOG_MARKUP_CHOICES)
 
@@ -271,3 +273,17 @@ class ReviewComment(models.Model):
     review_text = models.TextField(_("Review text"))
     timestamp = models.DateTimeField(_("Timestamp"), default=timezone.now)
     addressed = models.BooleanField(_("Addressed"), default=False)
+
+
+class PostsCompanies(models.Model):
+    posts_companies_id = models.AutoField(primary_key=True)
+    post = models.ForeignKey(Post)
+    company = models.ForeignKey('kwaddle.Company')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = [("post", "company")]
+
+    def __str__(self):
+        return "Post:{} connected to Company:{} (PK: {})".format(self.post, self.company, self.pk)

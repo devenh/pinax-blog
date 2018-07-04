@@ -52,9 +52,9 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <!-- a hrefs need to be able to navigate to resources/evergreen/categories/timebased articles -->
-                    <li class="breadcrumb-item"><a href="{% url 'pinax_blog:blog' %}">Resources</a></li>
-                    <li class="breadcrumb-item" aria-current="page"><a href="#">Evergreen</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Category</a></li>
+                    <li class="breadcrumb-item active"><a href="{% url 'pinax_blog:blog' %}">Resources</a></li>
+                    <!-- <li class="breadcrumb-item" aria-current="page"><a href="#">Evergreen</a></li>
+                    <li class="breadcrumb-item"><a href="#">Category</a></li> -->
                 </ol>
             </nav>
         </div>
@@ -63,7 +63,7 @@
         <div class="col">
             <div class="post-detail">
                 <div class="post">
-                    <h1>{{ post.title }}</h1>            
+                    <h1>{{ post.title }}</h1>
 
                     <div class="content">{{ post.content_html|safe }}</div>
 

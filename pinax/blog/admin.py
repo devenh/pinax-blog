@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .conf import settings
 from .forms import AdminPostForm
-from .models import Blog, Post, ReviewComment, Section
+from .models import Blog, Post, ReviewComment, Section, PostsCompanies
 
 
 #we don't need review comments inside the admin panel right now.
@@ -21,6 +21,12 @@ def make_published(modeladmin, request, queryset):
 
 
 make_published.short_description = _("Publish selected posts")
+
+class PostsCompaniesInline(admin.TabularInline):
+    model = PostsCompanies
+    fields = ['post', 'company']
+    raw_id_fields = ['post', 'company']
+    extra = 1
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -45,6 +51,7 @@ class PostAdmin(admin.ModelAdmin):
 
     prepopulated_fields = {"slug": ("title",)}
     inlines = [
+        PostsCompaniesInline,
 #        ReviewInline,
     ]
 
