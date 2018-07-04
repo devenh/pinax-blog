@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                 ('secret_key', models.CharField(help_text=b'allows url for sharing unpublished posts to unauthenticated users', unique=True, max_length=8, blank=True)),
                 ('view_count', models.IntegerField(default=0, editable=False)),
                 ('author', models.ForeignKey(related_name='posts', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
-                ('primary_image', models.ForeignKey(related_name='+', blank=True, to='blog.Image', null=True, on_delete=models.CASCADE)),
+                # ('primary_image', models.ForeignKey(related_name='+', blank=True, to='blog.Image', null=True, on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ('-published',),
