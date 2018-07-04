@@ -14,15 +14,15 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='image',
-            name='post',
-        ),
+        # migrations.RemoveField(
+        #     model_name='image',
+        #     name='post',
+        # ),
         # migrations.RemoveField(
         #     model_name='post',
         #     name='primary_image',
         # ),
-        migrations.DeleteModel(
-            name='Image',
-        ),
+        # migrations.DeleteModel(
+        #     name='Image',
+        # ),
     ]
